@@ -1,0 +1,10 @@
+[package]
+org = "hahack23"
+name = "lambda_iam_access_policy"
+version = "1.0.4"
+export = ["lambda_iam_access_policy"]
+distribution = "2201.5.5"
+keywords = ["choreo-apim-mediation-policy","choreo-apim-mediation-request-flow"]
+
+[build-options]
+observabilityIncluded = true
