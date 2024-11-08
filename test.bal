@@ -3,8 +3,8 @@ import ballerina/time;
 import ballerina/log;
 
 public function main() returns error? {
-    string aws_accesskey = "AKIAXDU24LPM5BT3DMOQ";
-    string aws_accesssecret = "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";
+    string aws_accesskey = "xxxx";
+    string aws_accesssecret = "xx";
     string aws_region = "us-east-1";
     string aws_service = "lambda";
     string aws_host = "wuxxcvrcq7kxwlx4xtxpl5f6py0obiyf.lambda-url.us-east-1.on.aws";
