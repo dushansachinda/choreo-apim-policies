@@ -44,7 +44,6 @@ public function policyNameIn(mediation:Context ctx, http:Request req,string aws_
     // Prepare canonical request elements
     string canonicalURI = "/";
     string canonicalQueryString = ""; // No query parameters
-    //string canonicalHeaders = string `host:${aws_host}\nx-amz-date:${amzDate}\n`;
     string canonicalHeaders = "host:" + aws_host + "\n" + "x-amz-date:" + amzDate + "\n";
     string signedHeaders = "host;x-amz-date";
 
@@ -55,9 +54,7 @@ public function policyNameIn(mediation:Context ctx, http:Request req,string aws_
 
 
      // Create the canonical request
-     // Create the canonical request
-     string canonicalRequest = //"GET\n" + canonicalURI + "\n" + canonicalQueryString + "\n" +
-                            //canonicalHeaders + "\n" + signedHeaders + "\n" + payloadHash;
+     string canonicalRequest = 
                             string:concat("GET\n", canonicalURI, "\n", canonicalQueryString, "\n", canonicalHeaders, "\n", signedHeaders, "\n", payloadHash);
                             
     log:printInfo("Canonical Request:", canonicalRequest=canonicalRequest);
@@ -88,10 +85,6 @@ ${crypto:hashSha256(canonicalRequest.toBytes()).toBase16().toLowerAscii()}`;
 
     // Construct the Authorization header
     string authorizationHeader = string `${algorithm} Credential=${aws_accesskey}/${credentialScope}, SignedHeaders=${signedHeaders}, Signature=${signature}`;
-
-
-
-    //string canonicalRequest = string `${httpMethod}\n${canonicalUri}\n${canonicalQuerystring}\n${canonicalHeaders}\n${signedHeaders}\n${payloadHash}`;
 
     // Set headers to the request
     req.setHeader("X-Amz-Date", amzDate);
